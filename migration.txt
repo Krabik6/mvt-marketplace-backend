@@ -1,0 +1,15 @@
+create table sales
+(
+    id              serial
+        primary key,
+    "NftId"         integer not null,
+    "NftCollection" text    not null,
+    "Seller"        text    not null,
+    "Cost"          integer not null,
+    "Token"         text    not null,
+    constraint userid_dateof_unique
+        unique ("NftCollection", "NftId")
+);
+
+alter table sales
+    owner to postgres;

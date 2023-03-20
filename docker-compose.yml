@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  mvt-marketplace-backend:
+    build: ./
+    command: ./wait-for-postgres.sh db ./mvt-marketplace-backend
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - DB_PASSWORD=qwerty
+    container_name: mvt-marketplace-backend
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - DB_PASSWORD=qwerty
+    ports:
+      - 5435:5432
