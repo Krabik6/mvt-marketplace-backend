@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"mvt-marketplace-backend/handler"
 	"mvt-marketplace-backend/repository"
@@ -9,7 +8,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello world")
 	db, err := repository.NewPostgresDB(
 		repository.Config{
 			Host:     "db",

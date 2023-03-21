@@ -20,3 +20,11 @@ services:
       - DB_PASSWORD=qwerty
     ports:
       - 5435:5432
+
+  migrate:
+    image: migrate/migrate
+    depends_on:
+      - db
+    volumes:
+      - ./migrations:/migrations
+    command: ["-path", "migrations", "-database", "postgres://postgres:qwerty@db:5432/postgres?sslmode=disable", "up"]
